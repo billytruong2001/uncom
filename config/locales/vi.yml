@@ -1,0 +1,6 @@
+vi:
+  welcome_to_the: "Chào mừng đến với trang chủ của tôi"
+
+  static_pages:
+    home:
+      this_is_the: "The only one (vi)"

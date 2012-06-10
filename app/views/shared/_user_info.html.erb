@@ -1,0 +1,12 @@
+<a href="<%= user_path(current_user) %>">
+  <%= gravatar_for current_user, size: 52 %>
+</a>
+<h1>
+  <%= current_user.name %>
+</h1>
+<span><%= link_to (t '.view_my'), current_user %>
+  
+</span>
+<span>
+  <%= t '.key', :current_user => (pluralize(current_user.microposts.count, "micropost") ) %>
+</span>
