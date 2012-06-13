@@ -41,7 +41,7 @@ namespace :deploy do
     sudo "ln -nfs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
     sudo "ln -nfs #{shared_path}/log/production.log #{current_path}/log/production.log"
     run "touch #{current_path}/tmp/restart.txt"
-    
+
     puts "Just linked database file to current config dir."
   end
   after "deploy:setup", "deploy:setup_config"
