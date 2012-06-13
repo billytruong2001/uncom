@@ -36,7 +36,7 @@ namespace :deploy do
     task command, roles: :app, except: {no_release: true} do
       run "#{sudo} /etc/init.d/apache2 #{command}"
     end
-    run "touch #{current_path}/tmp/restart.txt"
+    #run "touch #{current_path}/tmp/restart.txt"
   end
 
   desc "Make sure local git is in sync with remote."
