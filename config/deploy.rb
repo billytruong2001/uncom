@@ -31,13 +31,6 @@ ssh_options[:forward_agent] = true
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
 
 namespace :deploy do
-  %w[start stop restart].each do |command|
-    desc "#{command} apache server"
-    task command, roles: :app, except: {no_release: true} do
-      run "#{sudo} /etc/init.d/apache2 #{command}"
-    end
-    run "touch #{current_path}/tmp/restart.txt"
-  end
 
   task :setup_config, roles: :app do
     #sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
@@ -45,10 +38,21 @@ namespace :deploy do
     #run "mkdir -p #{shared_path}/config"
     #put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     
-    sudo "ln -nfs #{current_path}/shared/config/database.yml #{current_path}/current/config/database.yml"
+    sudo "ln -nfs #{shared_path}/config/database.yml #{current_path}/config/database.yml"
+    sudo "ln -nfs #{shared_path}/log/production.log #{current_path}/log/production.log"
+    run "touch #{current_path}/tmp/restart.txt"
+    
     puts "Just linked database file to current config dir."
   end
   after "deploy:setup", "deploy:setup_config"
+
+  %w[start stop restart].each do |command|
+    desc "#{command} apache server"
+    task command, roles: :app, except: {no_release: true} do
+      run "#{sudo} /etc/init.d/apache2 #{command}"
+    end
+    
+  end
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
