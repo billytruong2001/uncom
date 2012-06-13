@@ -36,8 +36,19 @@ namespace :deploy do
     task command, roles: :app, except: {no_release: true} do
       run "#{sudo} /etc/init.d/apache2 #{command}"
     end
-    #run "touch #{current_path}/tmp/restart.txt"
+    run "touch #{current_path}/tmp/restart.txt"
   end
+
+  task :setup_config, roles: :app do
+    #sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
+    #sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
+    #run "mkdir -p #{shared_path}/config"
+    #put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+    
+    sudo "ln -nfs #{current_path}/shared/config/database.yml #{current_path}/current/config/database.yml"
+    puts "Just linked database file to current config dir."
+  end
+  after "deploy:setup", "deploy:setup_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
