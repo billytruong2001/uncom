@@ -1,4 +1,6 @@
 RoRTutCh3::Application.routes.draw do
+  filter :locale
+
   scope "(:locale)", :locale => /en|zh|vi/ do
     resources :users do
       member do
