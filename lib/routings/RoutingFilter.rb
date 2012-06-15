@@ -1,27 +1,6 @@
-# The Locale filter extracts segments matching /:locale from the beginning of
-# the recognized path and exposes the page parameter as params[:locale]. When a
-# path is generated the filter adds the segments to the path accordingly if
-# the page parameter is passed to the url helper.
-#
-#   incoming url: /de/products
-#   filtered url: /products
-#   params:       params[:locale] = 'de'
-#
-# You can install the filter like this:
-#
-#   # in config/routes.rb
-#   Rails.application.routes.draw do
-#     filter :locale
-#   end
-#
-# To make your named_route helpers or url_for add the locale segments you
-# can use:
-#
-#   products_path(:locale => 'de')
-#   url_for(:products, :locale => 'de'))
-
 module RoutingFilter
-  class Locale < Filter
+  class Locale2 < Filter
+
     @@include_default_locale = true
     cattr_writer :include_default_locale
 
@@ -95,4 +74,5 @@ module RoutingFilter
       end
     end
   end
+  
 end

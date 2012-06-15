@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-RoRTutCh3::Application.initialize!
+UNCom::Application.initialize!

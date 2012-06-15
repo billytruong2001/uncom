@@ -1,7 +1,7 @@
-RoRTutCh3::Application.routes.draw do
-  filter :locale
+UNCom::Application.routes.draw do
+  #filter :locale
 
-  scope "(:locale)", :locale => /en|zh|vi/ do
+  scope "(:locale)", :locale => /vi|ko/ do
     resources :users do
       member do
         get :following, :followers

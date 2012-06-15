@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-RoRTutCh3::Application.load_tasks
+UNCom::Application.load_tasks
