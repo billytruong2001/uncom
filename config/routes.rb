@@ -1,7 +1,7 @@
 UNCom::Application.routes.draw do
   #filter :locale
 
-  scope "(:locale)", :locale => /vi|ko/ do
+  scope "(:locale)", :locale => /vi|en/ do
     resources :users do
       member do
         get :following, :followers

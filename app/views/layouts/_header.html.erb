@@ -4,6 +4,10 @@
       <%= link_to (t '.sample_app'), root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
+
+          <li><%= link_to_unless_current "English", locale: "en" %></li>
+          <li><%= link_to_unless_current "Tieng Viet", locale: "vi" %></li>
+
           <li><%= link_to (t '.home'), root_path %></li>
           <li><%= link_to (t '.help'), help_path %></li>
           <% if signed_in? %>
