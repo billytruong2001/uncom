@@ -8,6 +8,13 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'routing-filter'
 gem 'rails-i18n'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+#gem 'omniauth-linkedin'
+#gem 'omniauth-google_oauth2'
+#gem 'omniauth-yahoo'
+#gem 'omniauth-meetup'
+#gem 'omniauth-windowslive'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
